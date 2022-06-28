@@ -1,11 +1,11 @@
-const { Role } = require('../models');
+// const { Role } = require('../models');
 
-const roleData = [
-    {
+// const roleData = [
+//     {
 
-    },
-];
+//     },
+// ];
 
-const seedRole = () => Role.bulkCreate(roleData);
+// const seedRole = () => Role.bulkCreate(roleData);
 
-module.exports = seedRole;
+// module.exports = seedRole;

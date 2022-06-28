@@ -1,11 +1,11 @@
-const { Rank } = require('../models');
+// const { Rank } = require('../models');
 
-const rankData = [
-    {
+// const rankData = [
+//     {
 
-    },
-];
+//     },
+// ];
 
-const seedRank = () => Rank.bulkCreate(rankData);
+// const seedRank = () => Rank.bulkCreate(rankData);
 
-module.exports = seedRank;
+// module.exports = seedRank;
