@@ -1,18 +1,18 @@
-const sequelize = require('../config/connection');
-const seedUser = require('./userData');
-const seedRole = require('./roleData');
-const seedRank = require('./rankData');
+// const sequelize = require('../config/connection');
+// const seedUser = require('./userData');
+// const seedRole = require('./roleData');
+// const seedRank = require('./rankData');
 
-const seedAll = async () => {
-    await sequelize.sync({ force: true });
+// const seedAll = async () => {
+//     await sequelize.sync({ force: true });
   
-    await seedUser();
+//     await seedUser();
 
-    await seedRole();
+//     await seedRole();
 
-    await seedRank();
+//     await seedRank();
   
-    process.exit(0);
-  };
+//     process.exit(0);
+//   };
   
-seedAll();
+// seedAll();
