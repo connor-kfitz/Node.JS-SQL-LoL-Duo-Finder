@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
-const { User } = require('../../models');
+const { User, Role } = require('../../models');
 
 router.post('/login', async (req, res) => {
     
@@ -66,6 +66,28 @@ router.post('/', async (req, res) => {
       res.status(500).json(err);
     }
   });
+
+  router.post('/roles', async (req, res) => {
+    try {
+      const dbUserData = await Role.create({
+        adc: req.body.adc,
+        support: req.body.support,
+        mid: req.body.mid,
+        jungle: req.body.jungle,
+        top: req.body.top
+
+      });
+        req.session.save(() => {
+        req.session.loggedIn = true;
+        res.status(200).json(dbUserData);
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  });
+
+
 
   router.post('/logout', (req, res) => {
     // When the user logs out, destroy the session

@@ -64,9 +64,4 @@ router.get('/login', async (req, res) => {
     res.render('loginpage');
 });
 
-
-
 module.exports = router;
-
-
-
