@@ -6,7 +6,7 @@ class Role extends Model {}
 Role.init(
     {
         id: {
-            type: DataTypes.INTERGER,
+            type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
@@ -35,4 +35,4 @@ Role.init(
     }
 );
 
-module.exports = Role;
+module.exports = new Role;

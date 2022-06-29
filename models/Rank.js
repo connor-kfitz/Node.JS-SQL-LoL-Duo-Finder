@@ -1,90 +1,29 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Solo extends Model {}
-class Flex extends Model {}
+class Rank extends Model {}
 
-Solo.init(
+Rank.init(
     {
         id: {
-            type: DataTypes.INTERGER,
+            type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
         },
-        iron: {
-            type: DataTypes.Strings,
-            allowNull: false,
+        soloDuoRank: {
+            type: DataTypes.STRING,
         },
-        bronze: {
-            type: DataTypes.Strings,
-            allowNull: false,
-        },
-        silver: {
-            type: DataTypes.Strings,
-            allowNull: false,
-        },
-        gold: {
-            type: DataTypes.Strings,
-            allowNull: false,
-        },
-        platinum: {
-            type: DataTypes.Strings,
-            allowNull: false,
-        },
-        diamondPlus: {
-            type: DataTypes.Strings,
-            allowNull: false,
+        flexRank: {
+            type: DataTypes.STRING,
         },
     },
     {
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'solo',
-    }
-);
-Flex.init(
-    {
-        id: {
-            type: DataTypes.INTERGER,
-            allowNull: false,
-            primaryKey: true,
-            autoIncrement,
-        },
-        iron: {
-            type: DataTypes.Strings,
-            allowNull: false,
-        },
-        bronze: {
-            type: DataTypes.Strings,
-            allowNull: false,
-        },
-        silver: {
-            type: DataTypes.Strings,
-            allowNull: false,
-        },
-        gold: {
-            type: DataTypes.Strings,
-            allowNull: false,
-        },
-        platinum: {
-            type: DataTypes.Strings,
-            allowNull: false,
-        },
-        diamondPlus: {
-            type: DataTypes.Strings,
-            allowNull: false,
-        },
-        
-    },
-    {
-        sequelize,
-        freezeTableName: true,
-        underscored: true,
-        modelName: 'flex',
+        modelName: 'rank',
     }
 );
 
-module.exports = Solo;
-module.exports = Flex;
+module.exports = new Rank;

@@ -5,13 +5,13 @@ router.get('/', async (req, res) => {
       res.render('homepage', User);
   });
 
-// router.get('/search', async (req, res) => {
-//     res.render('searchpage');
-// });
+router.get('/search', async (req, res) => {
+    res.render('searchpage');
+});
 
-// router.get('/profile', async (req, res) => {
-//     res.render('profile');
-// });
+router.get('/profile', async (req, res) => {
+    res.render('profile');
+});
 
 module.exports = router;
 
