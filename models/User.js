@@ -12,27 +12,27 @@ User.init(
             autoIncrement: true,
         },
         user: {
-            type: DataTypes.Strings,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         password: {
-            type: DataTypes.Strings,
+            type: DataTypes.STRING,
             allowNull: false,
         },
         userRole: {
-            type: DataTypes.Strings,
+            type: DataTypes.STRING,
         },
         userChampions: {
-            type: DataTypes.Strings,
+            type: DataTypes.STRING,
         },
         userRank: {
-            type: DataTypes.Strings,
+            type: DataTypes.STRING,
         },
         userWinrate: {
             type: DataTypes.INTEGER,
         },
         gameName: {
-            type: DataTypes.Strings,
+            type: DataTypes.STRING,
             allowNull: false,
         },
     },
@@ -44,4 +44,4 @@ User.init(
     }
 );
 
-module.exports = User;
+module.exports = new User;
