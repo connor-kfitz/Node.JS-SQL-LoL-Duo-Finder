@@ -35,4 +35,4 @@ Role.init(
     }
 );
 
-module.exports = new Role;
+module.exports = Role;

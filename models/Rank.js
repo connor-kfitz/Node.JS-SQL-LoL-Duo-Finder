@@ -26,4 +26,4 @@ Rank.init(
     }
 );
 
-module.exports = new Rank;
+module.exports = Rank;
