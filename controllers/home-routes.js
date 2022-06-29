@@ -49,7 +49,7 @@ router.get('/profile', async (req, res) => {
             user.get({ plain: true})    
         );
 
-        res.render('profile', {
+        res.render('profilepage', {
             users,
             loggedIn: req.session.loggedIn,
         });
@@ -60,7 +60,8 @@ router.get('/profile', async (req, res) => {
     }
 });
 
+router.get('/login', async (req, res) => {
+    res.render('loginpage');
+});
+
 module.exports = router;
-
-
-
