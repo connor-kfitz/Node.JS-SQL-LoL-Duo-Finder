@@ -20,13 +20,13 @@ router.get('/', async (req, res) => {
     }
   });
 
-// router.get('/search', async (req, res) => {
-//     res.render('searchpage');
-// });
+router.get('/search', async (req, res) => {
+    res.render('searchpage');
+});
 
-// router.get('/profile', async (req, res) => {
-//     res.render('profile');
-// });
+router.get('/profile', async (req, res) => {
+    res.render('profile');
+});
 
 module.exports = router;
 
