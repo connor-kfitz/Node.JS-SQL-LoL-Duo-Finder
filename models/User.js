@@ -33,7 +33,7 @@ User.init(
         },
         gameName: {
             type: DataTypes.STRING,
-            allowNull: false,
+            // allowNull: false,
         },
     },
     {
@@ -44,4 +44,4 @@ User.init(
     }
 );
 
-module.exports = new User;
+module.exports = User;

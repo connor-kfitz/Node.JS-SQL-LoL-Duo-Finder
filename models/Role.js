@@ -11,19 +11,19 @@ Role.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        Top: {
+        adc: {
             type: DataTypes.BOOLEAN,
         },
-        Jungler: {
+        support: {
             type: DataTypes.BOOLEAN,
         },
-        Middle: {
+        mid: {
             type: DataTypes.BOOLEAN,
         },
-        ADC: {
+        jungle: {
             type: DataTypes.BOOLEAN,
         },
-        Support: {
+        top: {
             type: DataTypes.BOOLEAN,
         },
     },
@@ -35,4 +35,4 @@ Role.init(
     }
 );
 
-module.exports = new Role;
+module.exports = Role;
