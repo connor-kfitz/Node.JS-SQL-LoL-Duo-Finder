@@ -34,6 +34,13 @@
     left: 150px;
 }
 
+body {
+    background-image: url("./jpg/body-background.webp");
+    background-size: cover;
+    background-repeat:no-repeat;
+    height: 100vh;
+}
+
 /* // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) { ... }
 
