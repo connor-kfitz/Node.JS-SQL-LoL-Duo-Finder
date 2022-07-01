@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
-const { User, Role } = require('../../models');
+const { User, Role, Ranked } = require('../../models');
 
 router.post('/login', async (req, res) => {
     
@@ -56,6 +56,7 @@ router.post('/', async (req, res) => {
       const dbUserData = await User.create({
         user: req.body.user,
         password: await bcrypt.hash(req.body.password, 10),
+        gameName: req.body.gameName,
       });
         req.session.save(() => {
         req.session.loggedIn = true;
@@ -76,6 +77,22 @@ router.post('/', async (req, res) => {
         jungle: req.body.jungle,
         top: req.body.top
 
+      });
+        req.session.save(() => {
+        req.session.loggedIn = true;
+        res.status(200).json(dbUserData);
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  });
+
+  router.post('/rank', async (req, res) => {
+    try {
+      const dbUserData = await Ranked.create({
+        soloDuoRank: req.body.soloDuoRank,
+        flexRank: req.body.flexRank
       });
         req.session.save(() => {
         req.session.loggedIn = true;

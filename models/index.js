@@ -1,5 +1,7 @@
 const User = require('./User');
 const Role = require('./Role');
-const Rank = require('./Rank');
+const Ranked = require('./Ranked');
 
-module.exports = { User, Role, Rank} ;
+
+
+module.exports = { User, Role, Ranked} ;

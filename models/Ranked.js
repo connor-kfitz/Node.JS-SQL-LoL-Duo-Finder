@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Rank extends Model {}
+class Ranked extends Model {}
 
-Rank.init(
+Ranked.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -22,8 +22,8 @@ Rank.init(
         sequelize,
         freezeTableName: true,
         underscored: true,
-        modelName: 'rank',
+        modelName: 'ranked',
     }
 );
 
-module.exports = Rank;
+module.exports = Ranked;
