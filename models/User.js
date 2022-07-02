@@ -33,7 +33,7 @@ User.init(
         },
         gameName: {
             type: DataTypes.STRING,
-            // allowNull: false,
+            allowNull: false,
         },
     },
     {
