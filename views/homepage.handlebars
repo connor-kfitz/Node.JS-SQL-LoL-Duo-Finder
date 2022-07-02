@@ -1,15 +1,112 @@
 
 <!-- Image and text -->
   <main>
-  <div id="adcPlayerDisplay">
-    <h1>Sample ADC List</h1>
-
     
-    {{!-- {{#each users as |user| }}
-        <h2>Summoner Name: {{limitTenUser user}}</h2>
-        <h2>Solo/Duo Rank: {{limitTenUser user.rank}}</h2>
-        <h2>Flex Rank: {{limitTenUser user}}</h2>
-    {{/each}} --}}
 
-  </div>
+<div class="container-fluid">
+        <div class="row">
+            <div class="col p-1">
+                <div class="border border-dark">
+                    <div class="row">
+                        <div class="col">
+                            <div class="p-1">
+                                <h1>TOP APC</h1> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="border border-dark">
+                    <div class="row">
+                        <div class="col">
+                            <div class="p-1">
+                                  {{> adcDetails}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col p-1">
+                <div class="border border-dark">
+                    <div class="row">
+                        <div class="col">
+                            <div class="p-1">
+                                <h1>TOP SUPPORT</h1> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="border border-dark">
+                    <div class="row">
+                        <div class="col">
+                            <div class="p-1">
+                                {{> supportDetails}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col p-1">
+                <div class="border border-dark">
+                    <div class="row">
+                        <div class="col">
+                            <div class="p-1">
+                                <h1>TOP MID</h1> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="border border-dark">
+                    <div class="row">
+                        <div class="col">
+                            <div class="p-1">
+                                {{> midDetails}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col p-1">
+                <div class="border border-dark">
+                    <div class="row">
+                        <div class="col">
+                            <div class="p-1">
+                                <h1>TOP JUNGLE</h1> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="border border-dark">
+                    <div class="row">
+                        <div class="col">
+                            <div class="p-1">
+                                {{> jungleDetails}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col p-1">
+                <div class="border border-dark">
+                    <div class="row">
+                        <div class="col">
+                            <div class="p-1">
+                                <h1>TOP TOP</h1> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="border border-dark">
+                    <div class="row">
+                        <div class="col">
+                            <div class="p-1">
+                                {{> topDetails}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
   </main>

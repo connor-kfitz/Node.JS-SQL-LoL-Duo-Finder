@@ -19,13 +19,25 @@ User.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        userRole: {
+        adc: {
             type: DataTypes.STRING,
         },
-        userChampions: {
+        support: {
             type: DataTypes.STRING,
         },
-        userRank: {
+        mid: {
+            type: DataTypes.STRING,
+        },
+        jungle: {
+            type: DataTypes.STRING,
+        },
+        top: {
+            type: DataTypes.STRING,
+        },
+        soloDuoRank: {
+            type: DataTypes.STRING,
+        },
+        flexRank: {
             type: DataTypes.STRING,
         },
         userWinrate: {
