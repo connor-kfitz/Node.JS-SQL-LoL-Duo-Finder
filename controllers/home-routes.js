@@ -9,8 +9,15 @@ router.get('/', async (req, res) => {
             user.get({ plain: true})    
         );
 
+        const rankData = await Ranked.findAll();
+
+        const ranks = rankData.map((rank) => 
+            rank.get({ plain: true})    
+        );
+
         res.render('homepage', {
             users,
+            ranks,
             loggedIn: req.session.loggedIn,
         });
 
@@ -31,7 +38,7 @@ router.get('/search', async (req, res) => {
 
         res.render('searchpage', {
             users,
-            loggedIn: req.session.loggedIn,
+            loggedIn: req.session.loggedIn
         });
 
     } catch (err) {
@@ -52,6 +59,9 @@ router.get('/profile', async (req, res) => {
         res.render('profilepage', {
             users,
             loggedIn: req.session.loggedIn,
+            name: req.session.name,
+            soloRank: req.session.soloRank,
+            flexRank: req.session.flexRank,
         });
 
     } catch (err) {

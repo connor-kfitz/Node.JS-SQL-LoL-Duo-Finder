@@ -55,44 +55,44 @@ const loginFormHandler = async (event) => {
     var rankCheck = false;
     var soloDuoRank = "";
     if(iron == true){
-      soloDuoRank = 'iron';
+      soloDuoRank = 'Iron';
       rankCheck = true;
     } else if(bronze == true) {
-      soloDuoRank = 'bronze';
+      soloDuoRank = 'Bronze';
       rankCheck = true;
     } else if(silver == true) {
-      soloDuoRank = 'silver';
+      soloDuoRank = 'Silver';
       rankCheck = true;
     } else if(gold == true) {
-      soloDuoRank = 'gold';
+      soloDuoRank = 'Gold';
       rankCheck = true;
     } else if(platinum == true) {
-      soloDuoRank = 'platinum';
+      soloDuoRank = 'Platinum';
       rankCheck = true;
     } else if(diamond == true) {
-      soloDuoRank = 'diamond';
+      soloDuoRank = 'Diamond';
       rankCheck = true;
     }
 
     var rankFlexCheck = false;
     var flexRank = "";
     if(ironFlex == true){
-      flexRank = 'iron';
+      flexRank = 'Rron';
       rankFlexCheck = true;
     } else if(bronzeFlex == true) {
-      flexRank = 'bronze';
+      flexRank = 'Bronze';
       rankFlexCheck = true;
     } else if(silverFlex == true) {
-      flexRank = 'silver';
+      flexRank = 'Silver';
       rankFlexCheck = true;
     } else if(goldFlex == true) {
-      flexRank = 'gold';
+      flexRank = 'Gold';
       rankFlexCheck = true;
     } else if(platinumFlex == true) {
-      flexRank = 'platinum';
+      flexRank = 'Platinum';
       rankFlexCheck = true;
     } else if(diamondFlex == true) {
-      flexRank = 'diamond';
+      flexRank = 'Diamond';
       rankFlexCheck = true;
     }
     

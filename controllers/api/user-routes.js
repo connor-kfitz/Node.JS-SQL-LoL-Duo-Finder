@@ -3,9 +3,6 @@ const bcrypt = require('bcrypt');
 const { User, Role, Ranked } = require('../../models');
 
 router.post('/login', async (req, res) => {
-    
-    console.log(req.body.user);
-    console.log(req.body.password);
 
     try {
       const dbUserData = await User.findOne({
@@ -14,7 +11,7 @@ router.post('/login', async (req, res) => {
         },
       });
 
-      console.log()
+      
   
       if (!dbUserData) {
         res
@@ -22,9 +19,6 @@ router.post('/login', async (req, res) => {
           .json({ message: 'Incorrect username or password. Please try again!' });
         return;
       }
-      
-      console.log(dbUserData.user);
-      console.log(dbUserData.password);
 
       const validPassword = await bcrypt.compare(
         req.body.password,
@@ -37,12 +31,32 @@ router.post('/login', async (req, res) => {
           .json({ message: 'Incorrect username or password. Please try again!' });
         return;
       }
-  
+
+      var currentId = dbUserData.id;
+
+      dbRankData = await Ranked.findOne({
+        where: {
+          id: currentId,
+        }
+      })
+
+      var currentSoloRank = dbRankData.soloDuoRank;
+      var currentFlexRank = dbRankData.flexRank;
+
+      var currentName = dbUserData.gameName;
+
+      console.log(currentName);
+      console.log(currentSoloRank);
+      console.log(currentFlexRank);
+      
+
       // Once the user successfully logs in, set up the sessions variable 'loggedIn'
       req.session.save(() => {
         req.session.loggedIn = true;
-
-        res.status(200).json({ user: dbUserData, message: 'You are now logged in!' });
+        req.session.name = currentName;
+        req.session.soloRank = currentSoloRank;
+        req.session.flexRank = currentFlexRank;
+        res.status(200).json({ user: dbUserData, message: 'You are now logged in!' }); 
       });
     } catch (err) {
       console.log(err);
@@ -58,10 +72,16 @@ router.post('/', async (req, res) => {
         password: await bcrypt.hash(req.body.password, 10),
         gameName: req.body.gameName,
       });
+
+      var currentName = dbUserData.gameName;
+      console.log(currentName);
+
         req.session.save(() => {
         req.session.loggedIn = true;
+        req.session.name = currentName;
         res.status(200).json(dbUserData);
       });
+
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -82,6 +102,7 @@ router.post('/', async (req, res) => {
         req.session.loggedIn = true;
         res.status(200).json(dbUserData);
       });
+
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -94,10 +115,17 @@ router.post('/', async (req, res) => {
         soloDuoRank: req.body.soloDuoRank,
         flexRank: req.body.flexRank
       });
+
+      var currentSoloRank = dbUserData.soloDuoRank;
+      var currentFlexRank = dbUserData.flexRank;
+
         req.session.save(() => {
         req.session.loggedIn = true;
+        req.session.soloRank = currentSoloRank;
+        req.session.flexRank = currentFlexRank;
         res.status(200).json(dbUserData);
       });
+
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
