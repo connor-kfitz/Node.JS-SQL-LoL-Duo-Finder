@@ -18,7 +18,9 @@ module.exports = {
             return true;
         };
     },
-    loadUsers: (input) => {
-        console.log(input);
+    displayRole: (input) => {
+        if(input == '1'){
+            return true;
+        };
     }
 }

@@ -37,11 +37,18 @@ router.get('/search', async (req, res) => {
             user.get({ plain: true})    
         );
 
+        console.log(req.session.loggedIn);
+        console.log(req.session.usersLength);
+        console.log(req.session.roleSelect);
+        if(req.session.usersInfo){
+            console.log(req.session.usersInfo[0].adc);
+        }
         res.render('searchpage', {
             users,
             loggedIn: req.session.loggedIn,
             usersInfo: req.session.usersInfo,
             usersLength: req.session.usersLength,
+            roleSelect: req.session.roleSelect
         });
 
     } catch (err) {

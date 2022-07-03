@@ -96,6 +96,34 @@ const loginFormHandler = async (event) => {
       rankFlexCheck = true;
     }
 
+    if (user && password && gameName && roleCheck && rankCheck && rankFlexCheck) {
+      console.log(adc);
+      console.log(support);
+      console.log(mid);
+      console.log(jungle);
+      console.log(top);
+      const response = await fetch('/api/users', {
+        method: 'POST',
+        body: JSON.stringify({ user, password, adc, support, mid, jungle, top, soloDuoRank, flexRank, gameName }),
+        headers: { 'Content-Type': 'application/json' },
+      });
+
+      if (response.ok) {
+        document.location.replace('/');
+      } else {
+        alert('Failed to sign up.');
+      }
+    }
+  };
+
+  document
+    .querySelector('.login-form')
+    .addEventListener('submit', loginFormHandler);
+
+  document
+  .querySelector('.signup-form')
+  .addEventListener('submit', signupFormHandler);
+
     // if (user && password && gameName && roleCheck && rankCheck && rankFlexCheck) {
     //   const response = await fetch('/api/users', {
     //     method: 'POST',
@@ -121,26 +149,3 @@ const loginFormHandler = async (event) => {
     //     alert('Failed to sign up.');
     //   }
     // }
-
-    if (user && password && gameName && roleCheck && rankCheck && rankFlexCheck) {
-      const response = await fetch('/api/users', {
-        method: 'POST',
-        body: JSON.stringify({ user, password, adc, support, mid, jungle, top, soloDuoRank, flexRank, gameName }),
-        headers: { 'Content-Type': 'application/json' },
-      });
-
-      if (response.ok) {
-        document.location.replace('/');
-      } else {
-        alert('Failed to sign up.');
-      }
-    }
-  };
-
-  document
-    .querySelector('.login-form')
-    .addEventListener('submit', loginFormHandler);
-
-  document
-  .querySelector('.signup-form')
-  .addEventListener('submit', signupFormHandler);

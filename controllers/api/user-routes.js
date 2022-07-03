@@ -84,95 +84,190 @@ router.post('/', async (req, res) => {
     }
   });
 
-  // router.post('/roles', async (req, res) => {
-  //   try {
-  //     const dbUserData = await Role.create({
-  //       adc: req.body.adc,
-  //       support: req.body.support,
-  //       mid: req.body.mid,
-  //       jungle: req.body.jungle,
-  //       top: req.body.top
+router.post('/logout', (req, res) => {
+  // When the user logs out, destroy the session
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
+});
 
-  //     });
-  //       req.session.save(() => {
-  //       req.session.loggedIn = true;
-  //       res.status(200).json(dbUserData);
-  //     });
+// Solo/Duo Search Routes
 
-  //   } catch (err) {
-  //     console.log(err);
-  //     res.status(500).json(err);
-  //   }
-  // });
+router.post('/search/adc', async (req,res) => {
+  try {
+    const dbUserSoloData = await User.findAll({
+      where: {
+        adc: '1',
+        soloDuoRank: req.body.rankSelect
+      },
+    });
 
+    const users = dbUserSoloData.map((user) => 
+          user.get({ plain: true})    
+      );
+      
+      req.session.save(() => {
+      req.session.loggedIn = true;
+      req.session.usersInfo = users;
+      req.session.usersLength = users.length;
+      req.session.roleSelect = 'ADC';
 
+      res.status(200).json(dbUserSoloData);
+    });
 
-  // router.post('/rank', async (req, res) => {
-  //   try {
-  //     const dbUserData = await Ranked.create({
-  //       soloDuoRank: req.body.soloDuoRank,
-  //       flexRank: req.body.flexRank
-  //     });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
-  //     var currentSoloRank = dbUserData.soloDuoRank;
-  //     var currentFlexRank = dbUserData.flexRank;
+router.post('/search/support', async (req,res) => {
+  try {
+    const dbUserSoloData = await User.findAll({
+      where: {
+        support: '1',
+        soloDuoRank: req.body.rankSelect
+      },
+    });
 
-  //       req.session.save(() => {
-  //       req.session.loggedIn = true;
-  //       req.session.soloRank = currentSoloRank;
-  //       req.session.flexRank = currentFlexRank;
-  //       res.status(200).json(dbUserData);
-  //     });
+    const users = dbUserSoloData.map((user) => 
+          user.get({ plain: true})    
+      );
 
-  //   } catch (err) {
-  //     console.log(err);
-  //     res.status(500).json(err);
-  //   }
-  // });
+      console.log(users);
+      
+      req.session.save(() => {
+      req.session.loggedIn = true;
+      req.session.usersInfo = users;
+      req.session.usersLength = users.length;
+      req.session.roleSelect = 'Support';
 
+      res.status(200).json(dbUserSoloData);
+    });
 
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
-  router.post('/logout', (req, res) => {
-    // When the user logs out, destroy the session
-    if (req.session.loggedIn) {
-      req.session.destroy(() => {
-        res.status(204).end();
-      });
-    } else {
-      res.status(404).end();
-    }
-  });
+router.post('/search/mid', async (req,res) => {
+  try {
+    const dbUserSoloData = await User.findAll({
+      where: {
+        mid: '1',
+        soloDuoRank: req.body.rankSelect
+      },
+    });
 
-  router.post('/search/adc', async (req,res) => {
+    const users = dbUserSoloData.map((user) => 
+          user.get({ plain: true})    
+      );
+
+      console.log(users);
+      
+      req.session.save(() => {
+      req.session.loggedIn = true;
+      req.session.usersInfo = users;
+      req.session.usersLength = users.length;
+      req.session.roleSelect = 'Mid';
+      
+
+      res.status(200).json(dbUserSoloData);
+    });
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.post('/search/jungle', async (req,res) => {
+  try {
+    const dbUserSoloData = await User.findAll({
+      where: {
+        jungle: '1',
+        soloDuoRank: req.body.rankSelect
+      },
+    });
+
+    const users = dbUserSoloData.map((user) => 
+          user.get({ plain: true})    
+      );
+
+      console.log(users);
+      
+      req.session.save(() => {
+      req.session.loggedIn = true;
+      req.session.usersInfo = users;
+      req.session.usersLength = users.length;
+      req.session.roleSelect = 'Jungle';
+
+      res.status(200).json(dbUserSoloData);
+    });
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.post('/search/top', async (req,res) => {
+  try {
+    const dbUserSoloData = await User.findAll({
+      where: {
+        top: '1',
+        soloDuoRank: req.body.rankSelect
+      },
+    });
+
+    const users = dbUserSoloData.map((user) => 
+          user.get({ plain: true})    
+      );
+
+      console.log(users);
+      
+      req.session.save(() => {
+      req.session.loggedIn = true;
+      req.session.usersInfo = users;
+      req.session.usersLength = users.length;
+      req.session.roleSelect = 'Top';
+
+      res.status(200).json(dbUserSoloData);
+    });
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// Flex Search Routes
+
+router.post('/search/adc/flex', async (req,res) => {
     try {
-      const dbUserSoloData = await User.findAll({
+      const dbUserFlexData = await User.findAll({
         where: {
-          adc: 1,
-          soloDuoRank: req.body.rankSelect
+          adc: '1',
+          flexRank: req.body.rankSelect
         },
       });
 
-      // console.log(dbUserSoloData);
-
-      // const dbUserFlexData = await User.findAll({
-      //   where: {
-      //     adc: 1,
-      //     soloDuoRank: req.body.flexRank
-      //   },
-      // });
-
-      const users = dbUserSoloData.map((user) => 
+      const users = dbUserFlexData.map((user) => 
             user.get({ plain: true})    
         );
-
-        console.log(usersLengthArray);
         
         req.session.save(() => {
         req.session.loggedIn = true;
         req.session.usersInfo = users;
         req.session.usersLength = users.length;
+        req.session.roleSelect = 'ADC';
 
-        res.status(200).json(dbUserSoloData);
+        res.status(200).json(dbUserFlexData);
       });
 
     } catch (err) {
@@ -181,7 +276,124 @@ router.post('/', async (req, res) => {
     }
   });
 
-  
+router.post('/search/support/flex', async (req,res) => {
+  try {
+    const dbUserFlexData = await User.findAll({
+      where: {
+        support: '1',
+        flexRank: req.body.rankSelect
+      },
+    });
 
+    const users = dbUserFlexData.map((user) => 
+          user.get({ plain: true})    
+      );
+
+      console.log(users);
+      
+      req.session.save(() => {
+      req.session.loggedIn = true;
+      req.session.usersInfo = users;
+      req.session.usersLength = users.length;
+      req.session.roleSelect = 'Support';
+
+      res.status(200).json(dbUserFlexData);
+    });
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.post('/search/mid/flex', async (req,res) => {
+  try {
+    const dbUserFlexData = await User.findAll({
+      where: {
+        mid: '1',
+        flexRank: req.body.rankSelect
+      },
+    });
+
+    const users = dbUserFlexData.map((user) => 
+          user.get({ plain: true})    
+      );
+
+      console.log(users);
+      
+      req.session.save(() => {
+      req.session.loggedIn = true;
+      req.session.usersInfo = users;
+      req.session.usersLength = users.length;
+      req.session.roleSelect = 'Mid';
+
+      res.status(200).json(dbUserFlexData);
+    });
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.post('/search/jungle/flex', async (req,res) => {
+  try {
+    const dbUserFlexData = await User.findAll({
+      where: {
+        jungle: '1',
+        flexRank: req.body.rankSelect
+      },
+    });
+
+    const users = dbUserFlexData.map((user) => 
+          user.get({ plain: true})    
+      );
+
+      console.log(users);
+      
+      req.session.save(() => {
+      req.session.loggedIn = true;
+      req.session.usersInfo = users;
+      req.session.usersLength = users.length;
+      req.session.roleSelect = 'Jungle';
+
+      res.status(200).json(dbUserFlexData);
+    });
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.post('/search/top/flex', async (req,res) => {
+  try {
+    const dbUserFlexData = await User.findAll({
+      where: {
+        top: '1',
+        flexRank: req.body.rankSelect
+      },
+    });
+
+    const users = dbUserFlexData.map((user) => 
+          user.get({ plain: true})    
+      );
+
+      console.log(users);
+      
+      req.session.save(() => {
+      req.session.loggedIn = true;
+      req.session.usersInfo = users;
+      req.session.usersLength = users.length;
+      req.session.roleSelect = 'Top';
+
+      res.status(200).json(dbUserFlexData);
+    });
+
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;
