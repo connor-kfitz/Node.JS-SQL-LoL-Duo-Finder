@@ -114,7 +114,7 @@ router.post('/search/adc', async (req,res) => {
       req.session.loggedIn = true;
       req.session.usersInfo = users;
       req.session.usersLength = users.length;
-      req.session.roleSelect = 'adc';
+      req.session.roleSelect = 'ADC';
 
       res.status(200).json(dbUserSoloData);
     });
@@ -143,6 +143,8 @@ router.post('/search/support', async (req,res) => {
       req.session.save(() => {
       req.session.loggedIn = true;
       req.session.usersInfo = users;
+      req.session.usersLength = users.length;
+      req.session.roleSelect = 'Support';
 
       res.status(200).json(dbUserSoloData);
     });
@@ -171,6 +173,9 @@ router.post('/search/mid', async (req,res) => {
       req.session.save(() => {
       req.session.loggedIn = true;
       req.session.usersInfo = users;
+      req.session.usersLength = users.length;
+      req.session.roleSelect = 'Mid';
+      
 
       res.status(200).json(dbUserSoloData);
     });
@@ -199,6 +204,8 @@ router.post('/search/jungle', async (req,res) => {
       req.session.save(() => {
       req.session.loggedIn = true;
       req.session.usersInfo = users;
+      req.session.usersLength = users.length;
+      req.session.roleSelect = 'Jungle';
 
       res.status(200).json(dbUserSoloData);
     });
@@ -227,6 +234,8 @@ router.post('/search/top', async (req,res) => {
       req.session.save(() => {
       req.session.loggedIn = true;
       req.session.usersInfo = users;
+      req.session.usersLength = users.length;
+      req.session.roleSelect = 'Top';
 
       res.status(200).json(dbUserSoloData);
     });
@@ -256,7 +265,7 @@ router.post('/search/adc/flex', async (req,res) => {
         req.session.loggedIn = true;
         req.session.usersInfo = users;
         req.session.usersLength = users.length;
-        req.session.roleSelect = 'adc';
+        req.session.roleSelect = 'ADC';
 
         res.status(200).json(dbUserFlexData);
       });
@@ -285,6 +294,8 @@ router.post('/search/support/flex', async (req,res) => {
       req.session.save(() => {
       req.session.loggedIn = true;
       req.session.usersInfo = users;
+      req.session.usersLength = users.length;
+      req.session.roleSelect = 'Support';
 
       res.status(200).json(dbUserFlexData);
     });
@@ -313,6 +324,8 @@ router.post('/search/mid/flex', async (req,res) => {
       req.session.save(() => {
       req.session.loggedIn = true;
       req.session.usersInfo = users;
+      req.session.usersLength = users.length;
+      req.session.roleSelect = 'Mid';
 
       res.status(200).json(dbUserFlexData);
     });
@@ -341,6 +354,8 @@ router.post('/search/jungle/flex', async (req,res) => {
       req.session.save(() => {
       req.session.loggedIn = true;
       req.session.usersInfo = users;
+      req.session.usersLength = users.length;
+      req.session.roleSelect = 'Jungle';
 
       res.status(200).json(dbUserFlexData);
     });
@@ -369,6 +384,8 @@ router.post('/search/top/flex', async (req,res) => {
       req.session.save(() => {
       req.session.loggedIn = true;
       req.session.usersInfo = users;
+      req.session.usersLength = users.length;
+      req.session.roleSelect = 'Top';
 
       res.status(200).json(dbUserFlexData);
     });
