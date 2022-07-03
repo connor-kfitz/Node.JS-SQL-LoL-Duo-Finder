@@ -17,5 +17,8 @@ module.exports = {
         if((input.soloDuoRank == 'Diamond') || (input.flexRank == '')) {
             return true;
         };
+    },
+    loadUsers: (input) => {
+        console.log(input);
     }
 }

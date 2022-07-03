@@ -65,12 +65,16 @@ router.post('/', async (req, res) => {
         gameName: req.body.gameName,
       });
 
+      var currentSoloRank = dbUserData.soloDuoRank;
+      var currentFlexRank = dbUserData.flexRank;
+
       var currentName = dbUserData.gameName;
-      console.log(currentName);
 
         req.session.save(() => {
         req.session.loggedIn = true;
         req.session.name = currentName;
+        req.session.soloRank = currentSoloRank;
+        req.session.flexRank = currentFlexRank;
         res.status(200).json(dbUserData);
       });
 
@@ -139,28 +143,43 @@ router.post('/', async (req, res) => {
     }
   });
 
-  // router.get('/search', (req,res) => {
-  //   try {
-  //     const dbUserData = await User.findAll({
-  //       where: {
-  //         role: req.body.user,
-  //       },
-  //     });
+  router.post('/search/adc', async (req,res) => {
+    try {
+      const dbUserSoloData = await User.findAll({
+        where: {
+          adc: 1,
+          soloDuoRank: req.body.rankSelect
+        },
+      });
 
-  //     var currentName = dbUserData.gameName;
-  //     console.log(currentName);
+      // console.log(dbUserSoloData);
 
-  //       req.session.save(() => {
-  //       req.session.loggedIn = true;
-  //       req.session.name = currentName;
-  //       res.status(200).json(dbUserData);
-  //     });
+      // const dbUserFlexData = await User.findAll({
+      //   where: {
+      //     adc: 1,
+      //     soloDuoRank: req.body.flexRank
+      //   },
+      // });
 
-  //   } catch (err) {
-  //     console.log(err);
-  //     res.status(500).json(err);
-  //   }
-  // });
+      const users = dbUserSoloData.map((user) => 
+            user.get({ plain: true})    
+        );
+
+        console.log(usersLengthArray);
+        
+        req.session.save(() => {
+        req.session.loggedIn = true;
+        req.session.usersInfo = users;
+        req.session.usersLength = users.length;
+
+        res.status(200).json(dbUserSoloData);
+      });
+
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  });
 
   
 

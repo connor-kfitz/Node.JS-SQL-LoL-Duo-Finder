@@ -39,7 +39,9 @@ router.get('/search', async (req, res) => {
 
         res.render('searchpage', {
             users,
-            loggedIn: req.session.loggedIn
+            loggedIn: req.session.loggedIn,
+            usersInfo: req.session.usersInfo,
+            usersLength: req.session.usersLength,
         });
 
     } catch (err) {
