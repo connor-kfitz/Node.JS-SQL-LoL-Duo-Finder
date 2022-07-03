@@ -77,7 +77,7 @@ const loginFormHandler = async (event) => {
     var rankFlexCheck = false;
     var flexRank = "";
     if(ironFlex == true){
-      flexRank = 'Rron';
+      flexRank = 'Iron';
       rankFlexCheck = true;
     } else if(bronzeFlex == true) {
       flexRank = 'Bronze';
@@ -95,28 +95,41 @@ const loginFormHandler = async (event) => {
       flexRank = 'Diamond';
       rankFlexCheck = true;
     }
+
+    // if (user && password && gameName && roleCheck && rankCheck && rankFlexCheck) {
+    //   const response = await fetch('/api/users', {
+    //     method: 'POST',
+    //     body: JSON.stringify({ user, password, gameName }),
+    //     headers: { 'Content-Type': 'application/json' },
+    //   });
+
+    //   const secondresponse = await fetch('/api/users/roles', {
+    //     method: 'Post',
+    //     body: JSON.stringify({ adc, support, mid, jungle, top}),
+    //     headers: { 'Content-Type': 'application/json' },
+    //   })
+
+    //   const thirdresponse = await fetch('/api/users/rank', {
+    //     method: 'Post',
+    //     body: JSON.stringify({ soloDuoRank , flexRank }),
+    //     headers: { 'Content-Type': 'application/json' },
+    //   })
     
+    //   if (response.ok && secondresponse.ok && thirdresponse.ok) {
+    //     document.location.replace('/');
+    //   } else {
+    //     alert('Failed to sign up.');
+    //   }
+    // }
 
     if (user && password && gameName && roleCheck && rankCheck && rankFlexCheck) {
       const response = await fetch('/api/users', {
         method: 'POST',
-        body: JSON.stringify({ user, password, gameName }),
+        body: JSON.stringify({ user, password, adc, support, mid, jungle, top, soloDuoRank, flexRank, gameName }),
         headers: { 'Content-Type': 'application/json' },
       });
 
-      const secondresponse = await fetch('/api/users/roles', {
-        method: 'Post',
-        body: JSON.stringify({ adc, support, mid, jungle, top}),
-        headers: { 'Content-Type': 'application/json' },
-      })
-
-      const thirdresponse = await fetch('/api/users/rank', {
-        method: 'Post',
-        body: JSON.stringify({ soloDuoRank , flexRank }),
-        headers: { 'Content-Type': 'application/json' },
-      })
-    
-      if (response.ok && secondresponse.ok && thirdresponse.ok) {
+      if (response.ok) {
         document.location.replace('/');
       } else {
         alert('Failed to sign up.');

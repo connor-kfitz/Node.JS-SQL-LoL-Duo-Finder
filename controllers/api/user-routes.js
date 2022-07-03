@@ -11,8 +11,6 @@ router.post('/login', async (req, res) => {
         },
       });
 
-      
-  
       if (!dbUserData) {
         res
           .status(400)
@@ -32,23 +30,9 @@ router.post('/login', async (req, res) => {
         return;
       }
 
-      var currentId = dbUserData.id;
-
-      dbRankData = await Ranked.findOne({
-        where: {
-          id: currentId,
-        }
-      })
-
-      var currentSoloRank = dbRankData.soloDuoRank;
-      var currentFlexRank = dbRankData.flexRank;
-
       var currentName = dbUserData.gameName;
-
-      console.log(currentName);
-      console.log(currentSoloRank);
-      console.log(currentFlexRank);
-      
+      var currentSoloRank = dbUserData.soloDuoRank;
+      var currentFlexRank = dbUserData.flexRank;
 
       // Once the user successfully logs in, set up the sessions variable 'loggedIn'
       req.session.save(() => {
@@ -58,6 +42,7 @@ router.post('/login', async (req, res) => {
         req.session.flexRank = currentFlexRank;
         res.status(200).json({ user: dbUserData, message: 'You are now logged in!' }); 
       });
+      
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -70,6 +55,13 @@ router.post('/', async (req, res) => {
       const dbUserData = await User.create({
         user: req.body.user,
         password: await bcrypt.hash(req.body.password, 10),
+        adc: req.body.adc,
+        support: req.body.support,
+        mid: req.body.mid,
+        jungle: req.body.jungle,
+        top: req.body.top,
+        soloDuoRank: req.body.soloDuoRank,
+        flexRank: req.body.flexRank,
         gameName: req.body.gameName,
       });
 
@@ -88,49 +80,51 @@ router.post('/', async (req, res) => {
     }
   });
 
-  router.post('/roles', async (req, res) => {
-    try {
-      const dbUserData = await Role.create({
-        adc: req.body.adc,
-        support: req.body.support,
-        mid: req.body.mid,
-        jungle: req.body.jungle,
-        top: req.body.top
+  // router.post('/roles', async (req, res) => {
+  //   try {
+  //     const dbUserData = await Role.create({
+  //       adc: req.body.adc,
+  //       support: req.body.support,
+  //       mid: req.body.mid,
+  //       jungle: req.body.jungle,
+  //       top: req.body.top
 
-      });
-        req.session.save(() => {
-        req.session.loggedIn = true;
-        res.status(200).json(dbUserData);
-      });
+  //     });
+  //       req.session.save(() => {
+  //       req.session.loggedIn = true;
+  //       res.status(200).json(dbUserData);
+  //     });
 
-    } catch (err) {
-      console.log(err);
-      res.status(500).json(err);
-    }
-  });
+  //   } catch (err) {
+  //     console.log(err);
+  //     res.status(500).json(err);
+  //   }
+  // });
 
-  router.post('/rank', async (req, res) => {
-    try {
-      const dbUserData = await Ranked.create({
-        soloDuoRank: req.body.soloDuoRank,
-        flexRank: req.body.flexRank
-      });
 
-      var currentSoloRank = dbUserData.soloDuoRank;
-      var currentFlexRank = dbUserData.flexRank;
 
-        req.session.save(() => {
-        req.session.loggedIn = true;
-        req.session.soloRank = currentSoloRank;
-        req.session.flexRank = currentFlexRank;
-        res.status(200).json(dbUserData);
-      });
+  // router.post('/rank', async (req, res) => {
+  //   try {
+  //     const dbUserData = await Ranked.create({
+  //       soloDuoRank: req.body.soloDuoRank,
+  //       flexRank: req.body.flexRank
+  //     });
 
-    } catch (err) {
-      console.log(err);
-      res.status(500).json(err);
-    }
-  });
+  //     var currentSoloRank = dbUserData.soloDuoRank;
+  //     var currentFlexRank = dbUserData.flexRank;
+
+  //       req.session.save(() => {
+  //       req.session.loggedIn = true;
+  //       req.session.soloRank = currentSoloRank;
+  //       req.session.flexRank = currentFlexRank;
+  //       res.status(200).json(dbUserData);
+  //     });
+
+  //   } catch (err) {
+  //     console.log(err);
+  //     res.status(500).json(err);
+  //   }
+  // });
 
 
 
@@ -144,5 +138,31 @@ router.post('/', async (req, res) => {
       res.status(404).end();
     }
   });
+
+  // router.get('/search', (req,res) => {
+  //   try {
+  //     const dbUserData = await User.findAll({
+  //       where: {
+  //         role: req.body.user,
+  //       },
+  //     });
+
+  //     var currentName = dbUserData.gameName;
+  //     console.log(currentName);
+
+  //       req.session.save(() => {
+  //       req.session.loggedIn = true;
+  //       req.session.name = currentName;
+  //       res.status(200).json(dbUserData);
+  //     });
+
+  //   } catch (err) {
+  //     console.log(err);
+  //     res.status(500).json(err);
+  //   }
+  // });
+
+  
+
 
 module.exports = router;

@@ -1,0 +1,10 @@
+{{#each users as |user|}}
+    {{#if (getRole user.top)}}
+        {{#if (diamondCheck user)}}
+            <h2>Summoner Name: {{getName user}}</h2>
+            <h2>Solo/Duo Rank: {{getSoloRank user}}</h2>
+            <h2>Flex Rank: {{getFlexRank user}}</h2>
+            <div>-----------------------------------------------------------------------------</div>
+        {{/if}}
+    {{/if}}
+{{/each}}

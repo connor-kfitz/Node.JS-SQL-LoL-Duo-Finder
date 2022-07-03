@@ -1,31 +1,136 @@
-<main>
+    <main>
         <section>
-            <h1>
+            <h1 class="search-title">
                 Search
             </h1>
         </section>
-        <div class="dropdown">
-            <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Role
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Top</a>
-                <a class="dropdown-item" href="#">Jungle</a>
-                <a class="dropdown-item" href="#">Mid</a>
-                <a class="dropdown-item" href="#">ADC</a>
-                <a class="dropdown-item" href="#">Support</a>
-            </div>
+
+        <div>
+            <button id ='playerSearchButton'> Search </button>
         </div>
-        <div class="btn-group">
-            <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Rank
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Iron</a>
-                <a class="dropdown-item" href="#">Bronze</a>
-                <a class="dropdown-item" href="#">Silver</a>
-                <a class="dropdown-item" href="#">PLatinum</a>
-                <a class="dropdown-item" href="#">Diamond+</a>
+
+        <label for="roles">Role:</label>
+
+        <select name="roles" id="roles">
+            <option value="adc">ADC</option>
+            <option value="support">Support</option>
+            <option value="mid">Mid</option>
+            <option value="jungle">Jungle</option>
+            <option value="top">Top</option>
+        </select>
+
+        <label for="ranks">Rank:</label>
+
+        <select name="ranks" id="ranks">
+            <option value="iron">Iron</option>
+            <option value="bronze">Bronze</option>
+            <option value="silver">Silver</option>
+            <option value="gold">Gold</option>
+            <option value="platinum">Platinum</option>
+            <option value="diamond">Diamond+</option>
+        </select>
+
+
+
+        {{!-- <div class="container">
+            <div class="search-dropdown">
+                <div class="btn-group">
+                    <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Role
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="roleDropDownSelect">
+                        <a class="dropdown-item" href="#">
+                            <img src="/images/top.webp" width="30" height="30" class="d-inline-block align-top nav-title" alt="Top Logo" loading="lazy">   
+                            Top
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <img src="/images/jg.png" width="30" height="30" class="d-inline-block align-top nav-title" alt="Jungle Logo" loading="lazy">   
+                            Jungle
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <img src="/images/mid.webp" width="30" height="30" class="d-inline-block align-top nav-title" alt="Mid Logo" loading="lazy">   
+                            Mid
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <img src="/images/adc.jpg" width="30" height="30" class="d-inline-block align-top nav-title" alt="ADC Logo" loading="lazy">   
+                            ADC
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <img src="/images/support.webp" width="30" height="30" class="d-inline-block align-top nav-title" alt="Support Logo" loading="lazy">   
+                            Support
+                        </a>
+                    </div>
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Rank
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">
+                            <img src="/images/rank-iron.webp" width="30" height="30" class="d-inline-block align-top nav-title" alt="Iron Rank" loading="lazy">
+                            Iron
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <img src="/images/bronze.webp" width="30" height="30" class="d-inline-block align-top nav-title" alt="Bronze Rank" loading="lazy">
+                            Bronze
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <img src="/images/silver.webp" width="30" height="30" class="d-inline-block align-top nav-title" alt="Silver Rank" loading="lazy">    
+                            Silver
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <img src="/images/gold.png" width="30" height="30" class="d-inline-block align-top nav-title" alt="Gold Rank" loading="lazy">    
+                            Gold
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <img src="/images/plat.png" width="30" height="30" class="d-inline-block align-top nav-title" alt="Platinum Rank" loading="lazy">   
+                            Platinum</a>
+                        <a class="dropdown-item" href="#">
+                            <img src="/images/diamond.png" width="30" height="30" class="d-inline-block align-top nav-title" alt="Diamond Rank" loading="lazy">   
+                            Diamond+</a>
+                    </div>
+                </div>
+            </div>
+        </div> --}}
+        <div class="row row-cols-1 row-cols-md-5 search-box" id="search-box">  
+            <div class="card" style="width: 18rem;" id="search1">
+                <div class="card-body">
+                <h5 class="card-title">Search 1</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                <p class="card-text">
+                    Game Name:
+                    <br>
+                    Rank:
+                    <br>
+                    Role:
+                </p>
+                </div>
+            </div>
+           
+            <div class="card" style="width: 18rem;" id="search2">
+                <div class="card-body">
+                <h5 class="card-title">Search 2</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                <p class="card-text">  Game Name:
+                    <br>
+                    Rank:
+                    <br>
+                    Role:
+                </p>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;" id="search3">
+                <div class="card-body">
+                <h5 class="card-title">Search 3</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                <p class="card-text">  Game Name:
+                    <br>
+                    Rank:
+                    <br>
+                    Role:
+                </p>            
+                </div>
             </div>
         </div>
     </main>
+    <script src="/js/search.js"></script>
