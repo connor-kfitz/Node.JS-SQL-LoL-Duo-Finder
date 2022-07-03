@@ -20,5 +20,11 @@ module.exports = {
     },
     loadUsers: (input) => {
         console.log(input);
+    },
+    verifyRole: (input) => {
+        if(input == 'adc') {
+            console.log(input);
+            return true;
+        }
     }
 }

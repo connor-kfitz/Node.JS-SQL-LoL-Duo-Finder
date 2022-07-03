@@ -1,7 +1,7 @@
     <main>
         <section>
             <h1 class="search-title">
-                Solo / Duo Search
+                Solo/Duo Search
             </h1>
         </section>
 
@@ -29,6 +29,37 @@
             <option value="platinum">Platinum</option>
             <option value="diamond">Diamond+</option>
         </select>
+
+                <section>
+            <h1 class="search-title">
+                Flex Search
+            </h1>
+        </section>
+
+        <div>
+            <button id ='flexPlayerSearchButton'> Search </button>
+        </div>
+
+        <label for="roles">Role:</label>
+
+        <select name="roles" id="flexRoles">
+            <option value="adc">ADC</option>
+            <option value="support">Support</option>
+            <option value="mid">Mid</option>
+            <option value="jungle">Jungle</option>
+            <option value="top">Top</option>
+        </select>
+
+        <label for="ranks">Rank:</label>
+
+        <select name="ranks" id="flexRanks">
+            <option value="iron">Iron</option>
+            <option value="bronze">Bronze</option>
+            <option value="silver">Silver</option>
+            <option value="gold">Gold</option>
+            <option value="platinum">Platinum</option>
+            <option value="diamond">Diamond+</option>
+        </select>
          
         <div class="row row-cols-1 row-cols-md-5 search-box" id="search-box">
             {{#each usersInfo}}   
@@ -42,12 +73,13 @@
                     <br>
                     Rank: {{soloDuoRank}}
                     <br>
-                    Role: ADC                    
+                    {{#if (verifyRole roleSelect)}}
+                    Role: ADC     
+                    {{/if}}              
                 </p>
                 </div>
             </div>
            {{/each}}
-
         </div>
     </main>
     <script src="/js/search.js"></script>

@@ -41,7 +41,7 @@ router.get('/search', async (req, res) => {
             users,
             loggedIn: req.session.loggedIn,
             usersInfo: req.session.usersInfo,
-            usersLength: req.session.usersLength,
+            roleSelect: req.session.roleSelect
         });
 
     } catch (err) {
