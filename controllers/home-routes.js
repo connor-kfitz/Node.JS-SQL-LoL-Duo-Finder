@@ -1,23 +1,20 @@
 const router = require('express').Router();
-const { User, Ranked } = require('../models');
+const { User } = require('../models');
 
+// Display Homepage on views/layouts/main.handlebars
 router.get('/', async (req, res) => {
     try{
+        // Find all users data
         const userData = await User.findAll();
 
+        // Serialize data
         const users = userData.map((user) => 
             user.get({ plain: true})    
         );
 
-        const rankData = await Ranked.findAll();
-
-        const ranks = rankData.map((rank) => 
-            rank.get({ plain: true})    
-        );
-
+        // Renders the body as homepage with the users data and logged in status
         res.render('homepage', {
             users,
-            ranks,
             loggedIn: req.session.loggedIn,
         });
 
@@ -25,23 +22,33 @@ router.get('/', async (req, res) => {
         console.log(err);
         res.status(500).json(err);
     }
+});
 
-  });
-
-router.get('/search', async (req, res) => {
-    // res.render('searchpage');
+// Displays Profilepage on views/layouts/main.handlebars
+router.get('/profile', async (req, res) => {
+    // res.render('profile');
     try{
-        const userData = await User.findAll();
+        // Renders the body with the logged in status, and logged in player name, solo rank, and flex rank
+        res.render('profilepage', {
+            loggedIn: req.session.loggedIn,
+            name: req.session.name,
+            soloRank: req.session.soloRank,
+            flexRank: req.session.flexRank,
+        });
 
-        const users = userData.map((user) => 
-            user.get({ plain: true})    
-        );
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+});
 
-        if(req.session.usersInfo){
-            console.log(req.session.usersInfo[0].adc);
-        }
+// Displays Searchpage on views/layouts/main.handlebars
+router.get('/search', async (req, res) => {
+    try{
+        // Renders the body as searchpage with the users data, logged in status, length of players in selected array
+        // the selected role, and the que type
         res.render('searchpage', {
-            users,
+            // users,
             loggedIn: req.session.loggedIn,
             usersInfo: req.session.usersInfo,
             usersLength: req.session.usersLength,
@@ -55,29 +62,7 @@ router.get('/search', async (req, res) => {
     }
 });
 
-router.get('/profile', async (req, res) => {
-    // res.render('profile');
-    try{
-        const userData = await User.findAll();
-
-        const users = userData.map((user) => 
-            user.get({ plain: true})    
-        );
-
-        res.render('profilepage', {
-            users,
-            loggedIn: req.session.loggedIn,
-            name: req.session.name,
-            soloRank: req.session.soloRank,
-            flexRank: req.session.flexRank,
-        });
-
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
-});
-
+// Displays the Loginpage
 router.get('/login', async (req, res) => {
     res.render('loginpage');
 });

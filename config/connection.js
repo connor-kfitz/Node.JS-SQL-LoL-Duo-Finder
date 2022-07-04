@@ -1,6 +1,8 @@
+// Connect to Sequelize & Require Dotenv
 const Sequelize = require('sequelize');
 require('dotenv').config();
 
+// Connect using login credentials from .env file
 const sequelize = new Sequelize(
   process.env.DB_NAME,
   process.env.DB_USER,

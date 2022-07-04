@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
-const { User, Role, Ranked } = require('../../models');
+const { User } = require('../../models');
 
 router.post('/login', async (req, res) => {
 
@@ -34,7 +34,6 @@ router.post('/login', async (req, res) => {
       var currentSoloRank = dbUserData.soloDuoRank;
       var currentFlexRank = dbUserData.flexRank;
 
-      // Once the user successfully logs in, set up the sessions variable 'loggedIn'
       req.session.save(() => {
         req.session.loggedIn = true;
         req.session.name = currentName;
