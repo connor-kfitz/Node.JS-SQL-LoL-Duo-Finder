@@ -61,12 +61,14 @@
             <option value="diamond">Diamond+</option>
         </select>
          
-         <h1>Total Results: {{usersLength}}</h1>
+        <h1>Total Results: {{usersLength}}</h1>
         <h1>Displayed Role: {{roleSelect}}</h1>
         <div class="row row-cols-1 row-cols-md-5 search-box" id="search-box">
             <div class="card" style="width: 18rem;" id="search1">
                 <div class="card-body">
-                <h5 class="card-title">Search Result</h5>           
+                <h5 class="card-title">Search Result</h5>     
+
+
                 {{#each usersInfo}} 
                 <p class="card-text">
                     Summoner Name: {{gameName}}
@@ -77,6 +79,8 @@
                 </div>
             </div>
            {{/each}}
+
+
         </div>
 
     </main>

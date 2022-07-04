@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Role, Ranked } = require('../models');
+const { User, Ranked } = require('../models');
 
 router.get('/', async (req, res) => {
     try{
@@ -37,9 +37,6 @@ router.get('/search', async (req, res) => {
             user.get({ plain: true})    
         );
 
-        console.log(req.session.loggedIn);
-        console.log(req.session.usersLength);
-        console.log(req.session.roleSelect);
         if(req.session.usersInfo){
             console.log(req.session.usersInfo[0].adc);
         }

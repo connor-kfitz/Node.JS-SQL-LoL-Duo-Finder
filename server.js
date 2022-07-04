@@ -3,7 +3,8 @@ const sequelize = require('./config/connection');
 const express = require('express');
 const exphbs = require('express-handlebars');
 const helpers = require('./utils/helpers');
-const dayjs = require('dayjs');
+// const dayjs = require('dayjs');
+// const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const hbs = exphbs.create({ helpers });
 
@@ -14,8 +15,14 @@ const PORT = process.env.PORT || 3001;
 
 const sess ={
   secret: 'Super secret secret',
+  // cookie: {
+  //   maxAge: 86400,
+  // },
   resave: false,
   saveUninitialized: false,
+  // store: new SequelizeStore({
+  //   db: sequelize,
+  // }),
 };
 
 app.use(session(sess));
