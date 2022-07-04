@@ -2,15 +2,17 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../../models');
 
+// Post request to login a user
 router.post('/login', async (req, res) => {
-
     try {
+      // Find a user in the database that meets the request username
       const dbUserData = await User.findOne({
         where: {
           user: req.body.user,
         },
       });
 
+      // If the user was not found then return an error
       if (!dbUserData) {
         res
           .status(400)
@@ -18,27 +20,29 @@ router.post('/login', async (req, res) => {
         return;
       }
 
+      // Un-hash the password using bcrypt to make sure it matches the user's input
       const validPassword = await bcrypt.compare(
         req.body.password,
         dbUserData.password
       );
-  
+
+      // If the passowrd is not valid then return an error
       if (!validPassword) {
         res
           .status(400)
           .json({ message: 'Incorrect username or password. Please try again!' });
         return;
       }
+      // var currentName = dbUserData.gameName;
+      // var currentSoloRank = dbUserData.soloDuoRank;
+      // var currentFlexRank = dbUserData.flexRank;
 
-      var currentName = dbUserData.gameName;
-      var currentSoloRank = dbUserData.soloDuoRank;
-      var currentFlexRank = dbUserData.flexRank;
-
+      // Set and save session variables for the loggedin status, game name, solo rank, and flex rank
       req.session.save(() => {
         req.session.loggedIn = true;
-        req.session.name = currentName;
-        req.session.soloRank = currentSoloRank;
-        req.session.flexRank = currentFlexRank;
+        req.session.name = dbUserData.gameName;
+        req.session.soloRank = dbUserData.soloDuoRank;
+        req.session.flexRank = dbUserData.flexRank;
         res.status(200).json({ user: dbUserData, message: 'You are now logged in!' }); 
       });
       
@@ -48,9 +52,10 @@ router.post('/login', async (req, res) => {
     }
 });
 
+// Post request to create a user
 router.post('/', async (req, res) => {
-    console.log(req.body.user);
     try {
+      // Create a user with all of the required info
       const dbUserData = await User.create({
         user: req.body.user,
         password: await bcrypt.hash(req.body.password, 10),
@@ -64,16 +69,17 @@ router.post('/', async (req, res) => {
         gameName: req.body.gameName,
       });
 
-      var currentSoloRank = dbUserData.soloDuoRank;
-      var currentFlexRank = dbUserData.flexRank;
-
+      // var currentSoloRank = dbUserData.soloDuoRank;
+      // var currentFlexRank = dbUserData.flexRank;
       var currentName = dbUserData.gameName;
 
-        req.session.save(() => {
+
+      // Set and save user variables for the logged in status, game name, solo rank, and flex rank
+      req.session.save(() => {
         req.session.loggedIn = true;
-        req.session.name = currentName;
-        req.session.soloRank = currentSoloRank;
-        req.session.flexRank = currentFlexRank;
+        req.session.name = dbUserData.gameName;
+        req.session.soloRank = dbUserData.soloDuoRank;
+        req.session.flexRank = dbUserData.flexRank;
         res.status(200).json(dbUserData);
       });
 
@@ -83,8 +89,9 @@ router.post('/', async (req, res) => {
     }
   });
 
+// Post request for logging a user out
 router.post('/logout', (req, res) => {
-  // When the user logs out, destroy the session
+  // Check to see if the user is logged in, and then destory the session
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
@@ -94,10 +101,11 @@ router.post('/logout', (req, res) => {
   }
 });
 
-// Solo/Duo Search Routes
-
+// // Solo/Duo Search Routes
+// Post route for ADC search
 router.post('/search/adc', async (req,res) => {
   try {
+    // Find all users where adc and the desired rank input are selected
     const dbUserSoloData = await User.findAll({
       where: {
         adc: '1',
@@ -109,13 +117,14 @@ router.post('/search/adc', async (req,res) => {
           user.get({ plain: true})    
       );
       
-      req.session.save(() => {
+    // Set and save user variables for the logged in status, array of selected users, length of the same array, 
+    // the selected role, and que type
+    req.session.save(() => {
       req.session.loggedIn = true;
       req.session.usersInfo = users;
       req.session.usersLength = users.length;
       req.session.roleSelect = 'ADC';
       req.session.queType = 'Solo/Duo';
-
       res.status(200).json(dbUserSoloData);
     });
 
@@ -125,6 +134,7 @@ router.post('/search/adc', async (req,res) => {
   }
 });
 
+// Post route for Support search
 router.post('/search/support', async (req,res) => {
   try {
     const dbUserSoloData = await User.findAll({
@@ -138,9 +148,7 @@ router.post('/search/support', async (req,res) => {
           user.get({ plain: true})    
       );
 
-      console.log(users);
-      
-      req.session.save(() => {
+    req.session.save(() => {
       req.session.loggedIn = true;
       req.session.usersInfo = users;
       req.session.usersLength = users.length;
@@ -156,6 +164,7 @@ router.post('/search/support', async (req,res) => {
   }
 });
 
+// Post route for Mid search
 router.post('/search/mid', async (req,res) => {
   try {
     const dbUserSoloData = await User.findAll({
@@ -169,9 +178,7 @@ router.post('/search/mid', async (req,res) => {
           user.get({ plain: true})    
       );
 
-      console.log(users);
-      
-      req.session.save(() => {
+    req.session.save(() => {
       req.session.loggedIn = true;
       req.session.usersInfo = users;
       req.session.usersLength = users.length;
@@ -187,6 +194,7 @@ router.post('/search/mid', async (req,res) => {
   }
 });
 
+// Post route for Jungle search
 router.post('/search/jungle', async (req,res) => {
   try {
     const dbUserSoloData = await User.findAll({
@@ -199,10 +207,8 @@ router.post('/search/jungle', async (req,res) => {
     const users = dbUserSoloData.map((user) => 
           user.get({ plain: true})    
       );
-
-      console.log(users);
       
-      req.session.save(() => {
+    req.session.save(() => {
       req.session.loggedIn = true;
       req.session.usersInfo = users;
       req.session.usersLength = users.length;
@@ -218,6 +224,7 @@ router.post('/search/jungle', async (req,res) => {
   }
 });
 
+// Post route for Top search
 router.post('/search/top', async (req,res) => {
   try {
     const dbUserSoloData = await User.findAll({
@@ -230,10 +237,8 @@ router.post('/search/top', async (req,res) => {
     const users = dbUserSoloData.map((user) => 
           user.get({ plain: true})    
       );
-
-      console.log(users);
       
-      req.session.save(() => {
+    req.session.save(() => {
       req.session.loggedIn = true;
       req.session.usersInfo = users;
       req.session.usersLength = users.length;
@@ -249,8 +254,8 @@ router.post('/search/top', async (req,res) => {
   }
 });
 
-// Flex Search Routes
-
+// // Flex Search Routes
+// Post route for ADC search
 router.post('/search/adc/flex', async (req,res) => {
     try {
       const dbUserFlexData = await User.findAll({
@@ -264,7 +269,7 @@ router.post('/search/adc/flex', async (req,res) => {
             user.get({ plain: true})    
         );
         
-        req.session.save(() => {
+      req.session.save(() => {
         req.session.loggedIn = true;
         req.session.usersInfo = users;
         req.session.usersLength = users.length;
@@ -280,6 +285,7 @@ router.post('/search/adc/flex', async (req,res) => {
     }
   });
 
+// Post route for Support search
 router.post('/search/support/flex', async (req,res) => {
   try {
     const dbUserFlexData = await User.findAll({
@@ -292,10 +298,8 @@ router.post('/search/support/flex', async (req,res) => {
     const users = dbUserFlexData.map((user) => 
           user.get({ plain: true})    
       );
-
-      console.log(users);
       
-      req.session.save(() => {
+    req.session.save(() => {
       req.session.loggedIn = true;
       req.session.usersInfo = users;
       req.session.usersLength = users.length;
@@ -311,6 +315,7 @@ router.post('/search/support/flex', async (req,res) => {
   }
 });
 
+// Post route for Mid search
 router.post('/search/mid/flex', async (req,res) => {
   try {
     const dbUserFlexData = await User.findAll({
@@ -324,9 +329,7 @@ router.post('/search/mid/flex', async (req,res) => {
           user.get({ plain: true})    
       );
 
-      console.log(users);
-      
-      req.session.save(() => {
+    req.session.save(() => {
       req.session.loggedIn = true;
       req.session.usersInfo = users;
       req.session.usersLength = users.length;
@@ -342,6 +345,7 @@ router.post('/search/mid/flex', async (req,res) => {
   }
 });
 
+// Post route for Jungle search
 router.post('/search/jungle/flex', async (req,res) => {
   try {
     const dbUserFlexData = await User.findAll({
@@ -354,10 +358,8 @@ router.post('/search/jungle/flex', async (req,res) => {
     const users = dbUserFlexData.map((user) => 
           user.get({ plain: true})    
       );
-
-      console.log(users);
       
-      req.session.save(() => {
+    req.session.save(() => {
       req.session.loggedIn = true;
       req.session.usersInfo = users;
       req.session.usersLength = users.length;
@@ -373,6 +375,7 @@ router.post('/search/jungle/flex', async (req,res) => {
   }
 });
 
+// Post route for Top search
 router.post('/search/top/flex', async (req,res) => {
   try {
     const dbUserFlexData = await User.findAll({
@@ -385,10 +388,8 @@ router.post('/search/top/flex', async (req,res) => {
     const users = dbUserFlexData.map((user) => 
           user.get({ plain: true})    
       );
-
-      console.log(users);
       
-      req.session.save(() => {
+    req.session.save(() => {
       req.session.loggedIn = true;
       req.session.usersInfo = users;
       req.session.usersLength = users.length;

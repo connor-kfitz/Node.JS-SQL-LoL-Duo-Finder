@@ -3,6 +3,7 @@ const sequelize = require('../config/connection');
 
 class User extends Model {}
 
+// Create user model
 User.init(
     {
         id: {
@@ -36,15 +37,15 @@ User.init(
         },
         soloDuoRank: {
             type: DataTypes.STRING,
+            allowNull: false,
         },
         flexRank: {
             type: DataTypes.STRING,
-        },
-        userWinrate: {
-            type: DataTypes.INTEGER,
+            allowNull: false,
         },
         gameName: {
             type: DataTypes.STRING,
+            allowNull: false,
             allowNull: false,
         },
     },
