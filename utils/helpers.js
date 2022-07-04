@@ -18,9 +18,9 @@ module.exports = {
             return true;
         };
     },
-    displayRole: (input) => {
-        if(input == '1'){
-            return true;
-        };
-    }
+    // displayRole: (input) => {
+    //     if(input == '1'){
+    //         return true;
+    //     };
+    // }
 }

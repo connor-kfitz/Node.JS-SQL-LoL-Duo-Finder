@@ -1,12 +1,14 @@
 const playerSearchButton = document.querySelector('#playerSearchButton');
 const flexPlayerSearchButton = document.querySelector('#flexPlayerSearchButton');
 
+// Function to get and display solo/duo search results based on user input
 const searchButtonHandler = async (event) => {
     event.preventDefault();
   
     const roleSelect = document.querySelector('#roles').value;
     const rankSelect = document.querySelector('#ranks').value;
 
+    // Solo/duo calls based on the selected role
     if(roleSelect == 'adc') {
       const response = await fetch('/api/users/search/adc', {
         method: 'POST',
@@ -73,6 +75,7 @@ const searchButtonHandler = async (event) => {
     }
   };
 
+// Function to get and display flex search results based on user input
 const flexSearchButtonHandler = async (event) => {
   event.preventDefault();
 
@@ -145,5 +148,6 @@ const flexSearchButtonHandler = async (event) => {
   }
 };
 
+// Event listeners for the submit buttons
 playerSearchButton.addEventListener('click', searchButtonHandler);
 flexPlayerSearchButton.addEventListener('click', flexSearchButtonHandler);
