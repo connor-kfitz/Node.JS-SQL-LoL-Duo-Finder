@@ -35,10 +35,14 @@
 }
 
 body {
-    background-image: url("./jpg/body-background.webp");
+    background-image: url("public\images\body-background.webp");
     background-size: cover;
     background-repeat:no-repeat;
     height: 100vh;
+}
+
+.search-title {
+    text-align: center;
 }
 
 /* // Small devices (landscape phones, 576px and up)
