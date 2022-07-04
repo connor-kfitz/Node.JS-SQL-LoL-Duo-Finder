@@ -35,7 +35,7 @@
 }
 
 body {
-    background-image: url("./jpg/body-background.webp");
+    background-image: url("./images/body-background.webp");
     background-size: cover;
     background-repeat:no-repeat;
     height: 100vh;
