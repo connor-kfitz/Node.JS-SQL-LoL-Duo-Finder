@@ -115,6 +115,7 @@ router.post('/search/adc', async (req,res) => {
       req.session.usersInfo = users;
       req.session.usersLength = users.length;
       req.session.roleSelect = 'ADC';
+      req.session.queType = 'Solo/Duo';
 
       res.status(200).json(dbUserSoloData);
     });
@@ -145,6 +146,7 @@ router.post('/search/support', async (req,res) => {
       req.session.usersInfo = users;
       req.session.usersLength = users.length;
       req.session.roleSelect = 'Support';
+      req.session.queType = 'Solo/Duo';
 
       res.status(200).json(dbUserSoloData);
     });
@@ -175,7 +177,7 @@ router.post('/search/mid', async (req,res) => {
       req.session.usersInfo = users;
       req.session.usersLength = users.length;
       req.session.roleSelect = 'Mid';
-      
+      req.session.queType = 'Solo/Duo';
 
       res.status(200).json(dbUserSoloData);
     });
@@ -206,6 +208,7 @@ router.post('/search/jungle', async (req,res) => {
       req.session.usersInfo = users;
       req.session.usersLength = users.length;
       req.session.roleSelect = 'Jungle';
+      req.session.queType = 'Solo/Duo';
 
       res.status(200).json(dbUserSoloData);
     });
@@ -236,6 +239,7 @@ router.post('/search/top', async (req,res) => {
       req.session.usersInfo = users;
       req.session.usersLength = users.length;
       req.session.roleSelect = 'Top';
+      req.session.queType = 'Solo/Duo';
 
       res.status(200).json(dbUserSoloData);
     });
@@ -266,6 +270,7 @@ router.post('/search/adc/flex', async (req,res) => {
         req.session.usersInfo = users;
         req.session.usersLength = users.length;
         req.session.roleSelect = 'ADC';
+        req.session.queType = 'Flex';
 
         res.status(200).json(dbUserFlexData);
       });
@@ -296,6 +301,7 @@ router.post('/search/support/flex', async (req,res) => {
       req.session.usersInfo = users;
       req.session.usersLength = users.length;
       req.session.roleSelect = 'Support';
+      req.session.queType = 'Flex';
 
       res.status(200).json(dbUserFlexData);
     });
@@ -326,6 +332,7 @@ router.post('/search/mid/flex', async (req,res) => {
       req.session.usersInfo = users;
       req.session.usersLength = users.length;
       req.session.roleSelect = 'Mid';
+      req.session.queType = 'Flex';
 
       res.status(200).json(dbUserFlexData);
     });
@@ -356,6 +363,7 @@ router.post('/search/jungle/flex', async (req,res) => {
       req.session.usersInfo = users;
       req.session.usersLength = users.length;
       req.session.roleSelect = 'Jungle';
+      req.session.queType = 'Flex';
 
       res.status(200).json(dbUserFlexData);
     });
@@ -386,6 +394,7 @@ router.post('/search/top/flex', async (req,res) => {
       req.session.usersInfo = users;
       req.session.usersLength = users.length;
       req.session.roleSelect = 'Top';
+      req.session.queType = 'Flex';
 
       res.status(200).json(dbUserFlexData);
     });
