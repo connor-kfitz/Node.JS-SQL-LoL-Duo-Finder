@@ -1,10 +1,13 @@
+// Date display using dayJs
 const dateDisplay = document.querySelector('#dateDisplay');
 dateDisplay.addEventListener('click', formatDate);
 
 dateDisplay.innerHTML = dayjs().format("MMMM DD, YYYY");
 
+// Count to keep track of current date style
 var count = 0;
 
+// Format date based on count input, incrementing on each click
 function formatDate(){
     if(count == 0){
         dateDisplay.innerHTML = dayjs().format("MMMM-DD-YYYY");;
