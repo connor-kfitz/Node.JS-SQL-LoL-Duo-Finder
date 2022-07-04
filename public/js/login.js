@@ -1,16 +1,21 @@
+// Function to export login form information
 const loginFormHandler = async (event) => {
     event.preventDefault();
   
+    // Connect username and password boxes to login.js
     const user = document.querySelector('#username-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
   
+    // Confirm a username and password were entered 
     if (user && password) {
+      // Make post request to login the user
       const response = await fetch('/api/users/login', {
         method: 'POST',
         body: JSON.stringify({ user, password }),
         headers: { 'Content-Type': 'application/json' },
       });
   
+      // Take user back to homepage
       if (response.ok) {
         document.location.replace('/');
       } else {
@@ -19,9 +24,11 @@ const loginFormHandler = async (event) => {
     }
   };
 
-  const signupFormHandler = async (event) => {
+// Function to export signup form information
+const signupFormHandler = async (event) => {
     event.preventDefault();
-  
+
+    // Connect required inputs to login.js
     const user = document.querySelector('#username-signup').value.trim();
     const password = document.querySelector('#password-signup').value.trim();
 
@@ -47,11 +54,13 @@ const loginFormHandler = async (event) => {
 
     const gameName = document.querySelector('#gameName-signup').value.trim();
 
+    // If statment to verify at least one role was selected
     var roleCheck = false;
     if (adc || support || mid || jungle || top ) {
       roleCheck = true;
     }
 
+    // Check to make sure one solo/duo rank was selected, and set it to the input
     var rankCheck = false;
     var soloDuoRank = "";
     if(iron == true){
@@ -74,6 +83,7 @@ const loginFormHandler = async (event) => {
       rankCheck = true;
     }
 
+    // Check to make sure one flex rank was selected, and set it to the input
     var rankFlexCheck = false;
     var flexRank = "";
     if(ironFlex == true){
@@ -96,56 +106,25 @@ const loginFormHandler = async (event) => {
       rankFlexCheck = true;
     }
 
+    // Make sure all sign up inputs are present
     if (user && password && gameName && roleCheck && rankCheck && rankFlexCheck) {
-      console.log(adc);
-      console.log(support);
-      console.log(mid);
-      console.log(jungle);
-      console.log(top);
+      // Request to create a new user with the inputs
       const response = await fetch('/api/users', {
         method: 'POST',
         body: JSON.stringify({ user, password, adc, support, mid, jungle, top, soloDuoRank, flexRank, gameName }),
         headers: { 'Content-Type': 'application/json' },
       });
 
+      // Takes user back to homepage
       if (response.ok) {
         document.location.replace('/');
       } else {
         alert('Failed to sign up.');
       }
     }
-  };
+};
 
-  document
-    .querySelector('.login-form')
-    .addEventListener('submit', loginFormHandler);
+// Login and signup submit buttons
+document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
 
-  document
-  .querySelector('.signup-form')
-  .addEventListener('submit', signupFormHandler);
-
-    // if (user && password && gameName && roleCheck && rankCheck && rankFlexCheck) {
-    //   const response = await fetch('/api/users', {
-    //     method: 'POST',
-    //     body: JSON.stringify({ user, password, gameName }),
-    //     headers: { 'Content-Type': 'application/json' },
-    //   });
-
-    //   const secondresponse = await fetch('/api/users/roles', {
-    //     method: 'Post',
-    //     body: JSON.stringify({ adc, support, mid, jungle, top}),
-    //     headers: { 'Content-Type': 'application/json' },
-    //   })
-
-    //   const thirdresponse = await fetch('/api/users/rank', {
-    //     method: 'Post',
-    //     body: JSON.stringify({ soloDuoRank , flexRank }),
-    //     headers: { 'Content-Type': 'application/json' },
-    //   })
-    
-    //   if (response.ok && secondresponse.ok && thirdresponse.ok) {
-    //     document.location.replace('/');
-    //   } else {
-    //     alert('Failed to sign up.');
-    //   }
-    // }
+document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
