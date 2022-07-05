@@ -1,34 +1,26 @@
   <main>
-    <section>
-        <h1>
-            My Profile
-            <!-- summoner name -->
-        </h1>
-    </section>
+    <div class="profile-page">
+        <section>
+            <h1>
+                My Profile
+                <!-- summoner name -->
+            </h1>
+        </section>
 
-    <section>
-        {{#if loggedIn}}
-        <div>
-            <h5>Summoner Name: {{name}}</h1>
-            <h5>Solo/Duo Rank: {{soloRank}}</h1>
-            <h5>Flex Rank: {{flexRank}}</h1>
-        </div>
-        {{else}}
-            <h3>Please <a href="/login"> login </a> to view your profile details</h3>
-        {{/if}}
-
-        
-    </section>
-
-    {{!-- <section>
-        <div class="row row-cols-1 row-cols-md-4">  
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Preferred Champions</h5>
-                </div>
+        <section>
+            {{#if loggedIn}}
+            <div>
+                <h5>Summoner Name: {{name}}</h1>
+                <h5>Solo/Duo Rank: {{soloRank}}</h1>
+                <h5>Flex Rank: {{flexRank}}</h1>
             </div>
-        </div>
-    </section> --}}
+            {{else}}
+                <h3>Please <a href="/login"> login </a> to view your profile details</h3>
+            {{/if}}
+
+            
+        </section> 
+    </div>    
 
 
 </main>

@@ -4,9 +4,6 @@
     right: 0%;
 }
 
-.navbar-brand {
-
-
 .nav-title {
     font-size: 30px;
 }
@@ -16,17 +13,32 @@
 }
 
 .search-title {
-    padding-left: 20px;
+  color:black;
+  padding: 20px;
 }
 
 .solo-duo-search {
     position: relative;
     padding-left: 20px;
+    margin-bottom: 20px;
+    padding: 50px;
+    height: 180px;
+    width: 350px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #5e96b9;
+    color: #ffffff;
 }
 
 .flex-search {
-    position: relative;
+position: relative;
    padding-left: 20px;
+   margin-bottom: 20px;
+   padding: 50px;
+   height: 180px;
+   width: 350px;
+   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   background-color: #5e96b9;
+   color: #ffffff;
 } 
 
 .search-results {
@@ -41,20 +53,22 @@
     flex-wrap: wrap;
     text-align:center;
     padding: 20px;
-    right: 20%;
-    /* left:500px; */
+    right: 200px;
+    bottom: 500px;
 }
 
 .search-dropdown {
     position: relative;
-    
+    top: 200px;
+    bottom: 200px;
+    height: 20px;
 }
 
 body {
     background-image: url("/images/body-background.webp");
     background-size: cover;
     background-repeat:no-repeat;
-    height: 100vh;
+    height: 120vh;
 }
 
 
@@ -62,6 +76,16 @@ body {
     text-align: center;
     margin-bottom: 20px;
     padding: 50px;
+    height: 900px;
+    width: 400px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #5e96b9;
+    color: #ffffff;
+}
+
+.profile-page {
+    margin: 20px;
+}
     height: 830px;
     width: 500px;
     right: 50%;
@@ -72,14 +96,14 @@ body {
 
 
 
-/* // Small devices (landscape phones, 576px and up)
+// Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) { ... }
 
-/* // Medium devices (tablets, 768px and up) */
-/* @media (min-width: 768px) { ... } */
+// Medium devices (tablets, 768px and up) 
+@media (min-width: 768px) { ... } 
 
-/* // Large devices (desktops, 992px and up) */
-/* @media (min-width: 992px) { ... } */
+// Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { ... }
 
-/* // Extra large devices (large desktops, 1200px and up) */
-/* @media (min-width: 1200px) { ... } */ 
+// Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { ... } 
