@@ -88,14 +88,32 @@ body {
 }
 
 
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) { ... }
+@media (min-width: 576px) {
+    body {     
+        background-image: url("/images/body-background.webp");
+        background-size: cover;
+        background-repeat:no-repeat;
+        height: 500vh;
+    }
+}
 
-// Medium devices (tablets, 768px and up) 
-@media (min-width: 768px) { ... } 
 
-// Large devices (desktops, 992px and up) */
-@media (min-width: 992px) { ... }
 
-// Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) { ... } 
+@media (min-width: 768px) {
+    body {     
+        background-image: url("/images/body-background.webp");
+        background-size: cover;
+        background-repeat:no-repeat;
+        height: 400vh;
+    }
+} 
+
+
+@media screen and (min-width: 920px) {
+    body {     
+        background-image: url("/images/body-background.webp");
+        background-size: cover;
+        background-repeat:no-repeat;
+        height: 300vh;
+    }
+}
