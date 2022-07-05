@@ -2,7 +2,7 @@
 
 ## Link to Application
 
-<!-- INSERT HEROKU LINK -->
+https://quiet-woodland-99342.herokuapp.com/
 
 ## Description
 Over the past decade the MOBA League of Legends has grown to a player base of 180 million.  With such an large amount of users, it can be daunting to look for players of a similar rank to play with.  The goal of this project is to design a full-stack application that assists players in finding other users to play both solo/duo & ranked games with.
@@ -47,7 +47,7 @@ As a user I want to be able to search for players of a similar skill level to pl
 * Express-Handlebars
 * Express-Session
 * mySql
-* mySql112
+* mySql12
 * Sequelize
 * Connect-Session-Sequelize
 * Handlebars
@@ -56,4 +56,14 @@ As a user I want to be able to search for players of a similar skill level to pl
 
 ## Pictures of Application
 
-<!-- INSET PICTURES OF FINAL APPLICATION -->
+### Main Page
+![Picture of Main Page](./images/quiet-woodland-99342.herokuapp.com_.png)
+
+### Profile Page
+![Picture of Profile Page](./images/quiet-woodland-99342.herokuapp.com_profile%20(1).png)
+
+### Search Page
+![Picture of Search Page](./images/quiet-woodland-99342.herokuapp.com_search.png)
+
+### Login Page
+![Picture of Login Page](./images/quiet-woodland-99342.herokuapp.com_login.png)
