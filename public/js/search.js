@@ -133,7 +133,6 @@ const flexSearchButtonHandler = async (event) => {
       alert('Failed to log in.');
     }
   }
-
   else if(roleSelect =='top') {
     const response = await fetch('/api/users/search/top/flex', {
       method: 'POST',
