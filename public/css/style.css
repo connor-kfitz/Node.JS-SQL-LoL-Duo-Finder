@@ -85,7 +85,6 @@ body {
 
 .profile-page {
     margin: 20px;
-}
     height: 830px;
     width: 500px;
     right: 50%;
@@ -131,7 +130,7 @@ body {
         background-image: url("/images/body-background.webp");
         background-size: cover;
         background-repeat:no-repeat;
-        height: 500vh;
+        height: 300vh;
     }
 }
 
@@ -142,7 +141,7 @@ body {
         background-image: url("/images/body-background.webp");
         background-size: cover;
         background-repeat:no-repeat;
-        height: 400vh;
+        height: 200vh;
     }
 } 
 
@@ -152,6 +151,6 @@ body {
         background-image: url("/images/body-background.webp");
         background-size: cover;
         background-repeat:no-repeat;
-        height: 300vh;
+        height: 150vh;
     }
 }
