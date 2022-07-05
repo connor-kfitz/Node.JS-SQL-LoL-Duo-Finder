@@ -41,9 +41,46 @@
             </h1>
         </section>
 
-        <div class="flex-search">
-            <div>
-                <button id ='flexPlayerSearchButton'> Search </button>
+        <div>
+            <button id ='flexPlayerSearchButton'> Search </button>
+        </div>
+
+        <label for="roles">Role:</label>
+
+        <select name="roles" id="flexRoles">
+            <option value="adc">ADC</option>
+            <option value="support">Support</option>
+            <option value="mid">Mid</option>
+            <option value="jungle">Jungle</option>
+            <option value="top">Top</option>
+        </select>
+
+        <label for="ranks">Rank:</label>
+
+        <select name="ranks" id="flexRanks">
+            <option value="iron">Iron</option>
+            <option value="bronze">Bronze</option>
+            <option value="silver">Silver</option>
+            <option value="gold">Gold</option>
+            <option value="platinum">Platinum</option>
+            <option value="diamond">Diamond+</option>
+        </select>
+         
+         <h1>Total Results: {{usersLength}}</h1>
+        <h1>Displayed Role: {{roleSelect}}</h1>
+        <div class="row row-cols-1 row-cols-md-5 search-box" id="search-box">
+            <div class="card" style="width: 18rem;" id="search1">
+                <div class="card-body">
+                <h5 class="card-title">Search Result</h5>           
+                
+                {{#each usersInfo}} 
+                <p class="card-text">
+                    Summoner Name: {{gameName}}
+                    <br>
+                    Rank: {{soloDuoRank}}
+                    <br>            
+                </p>
+                </div>
             </div>
             <br>
             <label for="roles">Role:</label>
