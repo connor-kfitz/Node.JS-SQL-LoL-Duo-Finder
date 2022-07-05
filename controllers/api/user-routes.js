@@ -33,9 +33,6 @@ router.post('/login', async (req, res) => {
           .json({ message: 'Incorrect username or password. Please try again!' });
         return;
       }
-      // var currentName = dbUserData.gameName;
-      // var currentSoloRank = dbUserData.soloDuoRank;
-      // var currentFlexRank = dbUserData.flexRank;
 
       // Set and save session variables for the loggedin status, game name, solo rank, and flex rank
       req.session.save(() => {
@@ -68,11 +65,6 @@ router.post('/', async (req, res) => {
         flexRank: req.body.flexRank,
         gameName: req.body.gameName,
       });
-
-      // var currentSoloRank = dbUserData.soloDuoRank;
-      // var currentFlexRank = dbUserData.flexRank;
-      var currentName = dbUserData.gameName;
-
 
       // Set and save user variables for the logged in status, game name, solo rank, and flex rank
       req.session.save(() => {
@@ -117,10 +109,9 @@ router.post('/search/adc', async (req,res) => {
           user.get({ plain: true})    
       );
       
-    // Set and save user variables for the logged in status, array of selected users, length of the same array, 
+    // Set and save user variables for the array of selected users, length of the same array, 
     // the selected role, and que type
     req.session.save(() => {
-      req.session.loggedIn = true;
       req.session.usersInfo = users;
       req.session.usersLength = users.length;
       req.session.roleSelect = 'ADC';
@@ -149,7 +140,6 @@ router.post('/search/support', async (req,res) => {
       );
 
     req.session.save(() => {
-      req.session.loggedIn = true;
       req.session.usersInfo = users;
       req.session.usersLength = users.length;
       req.session.roleSelect = 'Support';
@@ -179,7 +169,6 @@ router.post('/search/mid', async (req,res) => {
       );
 
     req.session.save(() => {
-      req.session.loggedIn = true;
       req.session.usersInfo = users;
       req.session.usersLength = users.length;
       req.session.roleSelect = 'Mid';
@@ -209,7 +198,6 @@ router.post('/search/jungle', async (req,res) => {
       );
       
     req.session.save(() => {
-      req.session.loggedIn = true;
       req.session.usersInfo = users;
       req.session.usersLength = users.length;
       req.session.roleSelect = 'Jungle';
@@ -239,7 +227,6 @@ router.post('/search/top', async (req,res) => {
       );
       
     req.session.save(() => {
-      req.session.loggedIn = true;
       req.session.usersInfo = users;
       req.session.usersLength = users.length;
       req.session.roleSelect = 'Top';
@@ -270,7 +257,6 @@ router.post('/search/adc/flex', async (req,res) => {
         );
         
       req.session.save(() => {
-        req.session.loggedIn = true;
         req.session.usersInfo = users;
         req.session.usersLength = users.length;
         req.session.roleSelect = 'ADC';
@@ -300,7 +286,6 @@ router.post('/search/support/flex', async (req,res) => {
       );
       
     req.session.save(() => {
-      req.session.loggedIn = true;
       req.session.usersInfo = users;
       req.session.usersLength = users.length;
       req.session.roleSelect = 'Support';
@@ -330,7 +315,6 @@ router.post('/search/mid/flex', async (req,res) => {
       );
 
     req.session.save(() => {
-      req.session.loggedIn = true;
       req.session.usersInfo = users;
       req.session.usersLength = users.length;
       req.session.roleSelect = 'Mid';
@@ -360,7 +344,6 @@ router.post('/search/jungle/flex', async (req,res) => {
       );
       
     req.session.save(() => {
-      req.session.loggedIn = true;
       req.session.usersInfo = users;
       req.session.usersLength = users.length;
       req.session.roleSelect = 'Jungle';
@@ -390,7 +373,6 @@ router.post('/search/top/flex', async (req,res) => {
       );
       
     req.session.save(() => {
-      req.session.loggedIn = true;
       req.session.usersInfo = users;
       req.session.usersLength = users.length;
       req.session.roleSelect = 'Top';
