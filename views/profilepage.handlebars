@@ -11,8 +11,48 @@
             {{#if loggedIn}}
             <div>
                 <h5>Summoner Name: {{name}}</h1>
-                <h5>Solo/Duo Rank: {{soloRank}}</h1>
+                <h5>Solo/Duo Rank: {{soloRank}}</h1> 
+
+                {{#if (dCheck soloRank)}}
+                    <img src="images/diamond.png" alt="">
+                {{/if}}
+                {{#if (pCheck soloRank)}}
+                    <img src="images/plat.png" alt="">
+                {{/if}}
+                {{#if (gCheck soloRank)}}
+                    <img src="images/gold.png" alt="">
+                {{/if}}
+                {{#if (sCheck soloRank)}}
+                    <img src="images/silver.png" alt="">
+                {{/if}}
+                {{#if (bCheck soloRank)}}
+                    <img src="images/bronze.png" alt="">
+                {{/if}}
+                {{#if (iCheck soloRank)}}
+                    <img src="images/rank-iron.webp" alt="">
+                {{/if}}
+
+
                 <h5>Flex Rank: {{flexRank}}</h1>
+                {{#if (dCheck flexRank)}}
+                    <img src="images/diamond.png" alt="">
+                {{/if}}
+                {{#if (pCheck flexRank)}}
+                    <img src="images/plat.png" alt="">
+                {{/if}}
+                {{#if (gCheck flexRank)}}
+                    <img src="images/gold.png" alt="">
+                {{/if}}
+                {{#if (sCheck flexRank)}}
+                    <img src="images/silver.png" alt="">
+                {{/if}}
+                {{#if (bCheck flexRank)}}
+                    <img src="images/bronze.png" alt="">
+                {{/if}}
+                {{#if (iCheck flexRank)}}
+                    <img src="images/rank-iron.webp" alt="">
+                {{/if}}
+
             </div>
             {{else}}
                 <h3>Please <a href="/login"> login </a> to view your profile details</h3>

@@ -26,7 +26,6 @@ router.get('/', async (req, res) => {
 
 // Displays Profilepage on views/layouts/main.handlebars
 router.get('/profile', async (req, res) => {
-    // res.render('profile');
     try{
         // Renders the body with the logged in status, and logged in player name, solo rank, and flex rank
         res.render('profilepage', {
